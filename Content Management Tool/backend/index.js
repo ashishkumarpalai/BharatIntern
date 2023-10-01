@@ -6,12 +6,13 @@ const { connection } = require("./configs/db")
 const{userRouter}=require("./routes/user.routes")
 const {authenticate}=require("./middleware/auth.middleware")
 const{productRouter}=require("./routes/product.routes")
-
+const cors=require("cors")
 
 // Create an Express application
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 // Define a basic route for the root endpoint
 app.get("/", async (req, res) => {
