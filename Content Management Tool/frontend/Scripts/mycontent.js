@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to fetch data from the API and display it
     async function fetchData() {
         try {
-            const response = await fetch(`http://localhost:3000/product?user=${userdata}`, {
+            const response = await fetch(`https://content-management-4mwe.onrender.com/product?user=${userdata}`, {
                 headers: {
                     "Content-type": "application/json",
                     Authorization: localStorage.getItem("token")
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const description = descriptionInput.value;
 
         // Replace with your API endpoint
-        fetch('http://localhost:3000/product', {
+        fetch('https://content-management-4mwe.onrender.com/product', {
             method: 'POST',
             headers: {
                 "Content-type": "application/json",
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (updatedTitle !== null && updatedImage !== null && updatedCategory !== null && updatedDescription !== null) {
                 // Replace with your API endpoint
-                fetch(`http://localhost:3000/product/${itemId}`, {
+                fetch(`https://content-management-4mwe.onrender.com/product/${itemId}`, {
                     method: 'PUT',
                     headers: {
                         "Content-type": "application/json",
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (confirmDelete) {
                 // Replace with your API endpoint
-                fetch(`http://localhost:3000/product/${itemId}`, {
+                fetch(`https://content-management-4mwe.onrender.com/product/${itemId}`, {
                     method: 'DELETE',
                     headers: {
                         "Content-type": "application/json",

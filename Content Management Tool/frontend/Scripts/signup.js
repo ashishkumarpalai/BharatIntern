@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Replace with your API endpoint for login
-        fetch("http://localhost:3000/user/login", {
+        fetch("https://content-management-4mwe.onrender.com/user/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -51,14 +51,20 @@ document.addEventListener("DOMContentLoaded", function () {
                         text: 'You have successfully logged in.',
                     });
                     // window.open("../index.html")
-                    window.location.href = "../index.html"
+                    // Redirect to another page after a delay
+                    setTimeout(function () {
+                        window.location.href = "../index.html";
+                    }, 2000); // 2000 milliseconds (2 seconds) delay
                 } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Login Failed',
                         text: 'Invalid credentials. Please try again.',
                     });
-                    window.location.href = "signup.html";
+                    // Redirect to another page after a delay
+                    setTimeout(function () {
+                        window.location.href = "../index.html";
+                    }, 2000); // 2000 milliseconds (2 seconds) delay
                 }
                 console.log("Login API Response:", data);
                 // Handle the response, such as redirecting the user or displaying an error message
@@ -82,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Replace with your API endpoint for signup
-        fetch("http://localhost:3000/user/register", {
+        fetch("https://content-management-4mwe.onrender.com/user/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -93,9 +99,43 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 console.log("Signup API Response:", data);
                 // Handle the response, such as redirecting the user or displaying an error message
+                // Check if registration was successful
+                if (data.msg === "new User has been register") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Registration Successful',
+                        text: 'You have successfully registered.',
+                    });
+                    // You can also redirect the user to a different page if needed.
+                    // Redirect to another page after a delay
+                    setTimeout(function () {
+                        window.location.href = "../index.html";
+                    }, 2000); // 2000 milliseconds (2 seconds) delay
+                } else {
+                    // Handle registration failure
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Registration Failed',
+                        text: 'You are already registered',
+                    });
+                    // Redirect to another page after a delay
+                    setTimeout(function () {
+                        window.location.href = "../index.html";
+                    }, 2000); // 2000 milliseconds (2 seconds) delay
+                }
             })
             .catch(error => {
                 console.error("Error:", error);
+                // Display an error alert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred while processing your request. Please try again later.',
+                });
+                // Redirect to another page after a delay
+                setTimeout(function () {
+                    window.location.href = "../index.html";
+                }, 2000); // 2000 milliseconds (2 seconds) delay
             });
     });
 });

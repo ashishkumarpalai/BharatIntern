@@ -1,5 +1,5 @@
 
-fetch('http://localhost:3000/product/all', {
+fetch('https://content-management-4mwe.onrender.com/product/all', {
     headers: {
         "Content-type": "application/json",
         Authorization: localStorage.getItem("token")
