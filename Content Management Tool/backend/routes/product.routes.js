@@ -49,7 +49,29 @@ productRouter.post('/', authenticate, async (req, res) => {
     }
 });
 
-//get the all products
+
+productRouter.get("/all", async (req, res) => {
+    const user = req.query.user;
+    const category = req.query.category;
+
+    try {
+        let query = {};
+
+        if (user && category) {
+            query = { user: user, category: category };
+        } else if (user) {
+            query = { user: user };
+        } else if (category) {
+            query = { category: category };
+        }
+
+        let products = await ProductModel.find(query);
+        res.status(200).send(products);
+    } catch (error) {
+        res.status(500).send({ "error": error.message });
+    }
+});
+//get the all products protected
 
 productRouter.get("/", authenticate, async (req, res) => {
     const user = req.query.user;

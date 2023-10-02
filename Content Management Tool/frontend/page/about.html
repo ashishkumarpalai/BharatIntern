@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Management Tool</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./style/landing.css">
+    <title>About</title>
+    <link rel="stylesheet" href="../style/about.css">
+    <link rel="stylesheet" href="../style/landing.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
 </head>
-
 <body>
     <nav class="nav">
         <div class="container">
             <div class="logo">
-                <a href="index.html">ContentManagement</a>
+                <a href="../index.html">ContentManagement</a>
             </div>
             <div class="main_list" id="mainListDiv">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="./page/content.html">Content</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../page/content.html">Content</a></li>
                     <li onclick="checkToken()"><a href="#">My Content</a></li>
-                    <li><a href="./page/about.html">About</a></li>
+                    <li><a href="../page/about.html">About</a></li>
                     <!-- <li><a href="./page/signup.html">Account</a></li> -->
                     <li class="dropdown">
                         <a href="#">Account</a>
@@ -43,8 +43,7 @@
             </div>
         </div>
     </nav>
-
-
+    <!-- <h1>About</h1> -->
     <!-- home section stars  -->
     <section class="home" id="home">
         <div class="content">
@@ -54,7 +53,7 @@
             <a href="#" class="home-btn">Get it on Chrome</a>
         </div>
         <div class="image">
-            <img src="images/illustration-hero.svg" alt="illustration-hero">
+            <img src="../images/illustration-hero.svg" alt="illustration-hero">
         </div>
     </section>
     <!-- home section ends -->
@@ -69,7 +68,7 @@
         <div class="row">
             <!-- 1 Tab  -->
             <div class="image">
-                <img src="images/illustration-features-tab-1.svg" alt="illustration-features-tab-1">
+                <img src="../images/illustration-features-tab-1.svg" alt="illustration-features-tab-1">
             </div>
             <div class="content">
                 <h1>Bookmark with a Single Click</h1>
@@ -86,12 +85,12 @@
                 <a href="#" class="all-btn">Learn More</a>
             </div>
             <div class="image">
-                <img src="images/illustration-features-tab-2.svg" alt="illustration-features-tab-2">
+                <img src="../images/illustration-features-tab-2.svg" alt="illustration-features-tab-2">
             </div>
             <!-- 2 Tab  -->
 
             <div class="image">
-                <img src="images/illustration-features-tab-3.svg" alt="illustration-features-tab-3">
+                <img src="../images/illustration-features-tab-3.svg" alt="illustration-features-tab-3">
             </div>
             <div class="content">
                 <h1>Share Your Content</h1>
@@ -112,19 +111,19 @@
         </div>
         <div class="box-container">
             <div class="box">
-                <img src="images/logo-chrome.svg" alt="logo-chrome">
+                <img src="../images/logo-chrome.svg" alt="logo-chrome">
                 <h3>Add to Chrome</h3>
                 <p>Minimum Version 63</p>
                 <a href="#" class="all-btn">Install</a>
             </div>
             <div class="box">
-                <img src="images/logo-firefox.svg" alt="logo-firefox">
+                <img src="../images/logo-firefox.svg" alt="logo-firefox">
                 <h3>Add to Firefox</h3>
                 <p>Minimum Version 55</p>
                 <a href="#" class="all-btn">Install</a>
             </div>
             <div class="box">
-                <img src="images/logo-opera.svg" alt="logo-opera">
+                <img src="../images/logo-opera.svg" alt="logo-opera">
                 <h3>Add to Opera</h3>
                 <p>Minimum Version 46</p>
                 <a href="#" class="all-btn">Install</a>
@@ -174,8 +173,62 @@
         </div>
     </section>
     <!-- footer section ends -->
-
 </body>
-
 </html>
-<script src="index.js"></script>
+<script src="../Scripts/about.js"></script>
+<script>
+    function checkToken() {
+        const token = localStorage.getItem('token');
+        if (token) {
+            // Token exists, allow access to the page
+            Swal.fire({
+                title: 'Access Granted',
+                text: 'You have access to the protected page.',
+                icon: 'success'
+            });
+
+
+            window.location.href = 'mycontent.html';
+            // window.open("./page/mycontent.html")
+        } else {
+            // Token does not exist, show an alert and redirect to a login page
+            Swal.fire({
+                title: 'Access Denied',
+                text: 'Please log in to access this page.',
+                icon: 'error'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to the login page
+                    window.location.href = '../index.html';
+                }
+            });
+        }
+    }
+
+
+    // Add logout functionality with Swal confirmation
+    const logoutButton = document.getElementById('logout');
+    logoutButton.addEventListener('click', function () {
+        // Show a confirmation dialog using SweetAlert
+        Swal.fire({
+            title: 'Logout',
+            text: 'Are you sure you want to log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Logout'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // User confirmed the logout
+                // Remove the token and user name from Local Storage
+                localStorage.removeItem('token');
+                localStorage.removeItem('name');
+                localStorage.removeItem('user');
+                // Redirect to the login page after logout
+                window.location.href = '../index.html';
+            }
+        });
+    });
+
+</script>
