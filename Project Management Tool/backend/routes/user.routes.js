@@ -1,57 +1,36 @@
 const express = require("express")
 const { UserModel } = require("../models/user.model")
+const { TaskModel } = require("../models/task.model")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
+const { authenticate } = require("../middleware/auth.middleware")
 
 const userRouter = express.Router()
 
+// Get all users with related data (posts and tasks)
+userRouter.get("/",authenticate, async (req, res) => {
+    try {
+        const allUsers = await UserModel.find().populate('tasks');
+        res.status(200).json(allUsers);
+    } catch (error) {
+        res.status(500).json({ "msg": "Something went wrong", "error": error.message });
+    }
+});
 
-// userRouter.post("/register", async (req, res) => {
-//     const { name, email, password } = req.body
-//     try {
-//         const user = await UserModel.find({ email })
-//         // console.log(user)
-//         if (user.length > 0) {
-//             res.send({ "msg": "user already exist" })
-//         } else {
-//             bcrypt.hash(password, 5, async function (err, hash) {
-//                 if (err) {
-//                     res.send({ "msg": "Something went wrong" })
-//                 } else {
-//                     const user = new UserModel({ name, email, password: hash })
-//                     await user.save()
-//                     res.status(201).send({ "msg": "new User has been register" })
-//                 }
-//             })
-//         }
-//     } catch (error) {
-//         res.send({ "msg": "Something went wrong", "error": error.message })
-//     }
-// })
+userRouter.get("/:userId",authenticate, async (req, res) => {
+    const userId = req.params.userId;
 
-// userRouter.post("/login", async (req, res) => {
-//     const { email, password } = req.body
+    try {
+        const user = await UserModel.findById(userId).populate('tasks'); // Use 'tasks' here if you want to populate tasks for this user
+        if (!user) {
+            return res.status(404).json({ "msg": "User not found" });
+        }
 
-//     try {
-//         const user = await UserModel.find({ email })
-//         if (user.length > 0) {
-//             bcrypt.compare(password, user[0].password, function (err, result) {
-//                 if (result) {
-//                     let token = jwt.sign({ userID: user[0]._id }, "masai", { expiresIn: "1h" })
-//                     res.status(201).send({ "msg": "Sucessfully Login ", "token": token, "user": user[0]._id ,"name":user[0].name})
-//                 }else{
-//                     res.send({ "msg": "Wrong Password" })
-//                 }
-//             })
-//         } else {
-//             res.send({ "msg": "Wrong Creadential" })
-//         }
-//     } catch (error) {
-//         res.send({ "msg": "Something Went wrong", "error": error.message })
-//     }
-// })
-
-
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ "msg": "Something went wrong", "error": error.message });
+    }
+});
 
 // Register a new user
 userRouter.post("/register", async (req, res) => {
@@ -100,7 +79,7 @@ userRouter.post("/login", async (req, res) => {
         // Create and send a JWT token upon successful login
         const token = jwt.sign({ userID: user._id }, "masai", { expiresIn: "1h" });
 
-        res.status(200).json({ "msg": "Successfully logged in", "token": token, "user": user._id, "name": user.name });
+        res.status(200).json({ "msg": "Successfully logged in", "token": token, "user": user._id, "name": user.name ,"email": user.email});
     } catch (error) {
         res.status(500).json({ "msg": "Something went wrong", "error": error.message });
     }
