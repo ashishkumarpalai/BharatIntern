@@ -1,11 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Management Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style/landing.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
-    
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">ProjectManagement</a>
+            </div>
+            <div class="main_list" id="mainListDiv">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li onclick="checkTokenalluser()"><a href="#">All User</a></li>
+                    <li onclick="checkToken()"><a href="#">Task </a></li>
+                    <!-- <li><a href="./page/about.html">About</a></li> -->
+                    <!-- <li><a href="./page/signup.html">Account</a></li> -->
+                    <li class="dropdown">
+                        <a href="#">Account</a>
+                        <div class="dropdown-content">
+                            <!-- <a href="#" id="uname">Name</a> -->
+                            <a href="./page/signup.html" id="signup">signup</a>
+                            <a href="#" id="logout">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="media_button">
+                <button class="main_media_button" id="mediaButton">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- home section stars  -->
+    <section class="home" id="home">
+        <div class="content">
+            <h1>Project Management</h1>
+            <p>Effortlessly Manage Your Projects. Organize Tasks Seamlessly. Try It for Free!</p>
+            <a href="#" class="home-btn">Try for Free</a>
+        </div>
+        <div class="image">
+            <img src="images/Team work-cuate.svg" alt="illustration-hero">
+        </div>
+    </section>
+    <!-- home section ends -->
+
+    <!-- features sectin starts  -->
+    <section class="features" id="features">
+        
+        <div class="row">
+            <!-- 1 Tab  -->
+            <div class="image">
+                <img src="images/Organizing projects-pana.svg" alt="illustration-features-tab-1">
+            </div>
+            <div class="content">
+                <h1>Task Management</h1>
+                <p>Task management is at the core of any project management tool. Users should be able to create, assign, prioritize, and track tasks easily. This includes features like task lists, due dates, task dependencies, and task assignments to team members.</p>
+                <a href="#" class="all-btn">Explore Now</a>
+            </div>
+            <!-- 1 Tab  -->
+
+            <!-- 2 Tab  -->
+            <div class="image">
+                <img src="images/Team goals-cuate.svg" alt="illustration-features-tab-2">
+            </div>
+            <div class="content">
+                <h1>Collaboration and Communication</h1>
+                <p> Effective collaboration and communication tools are crucial for teams working on projects. Features like real-time chat, discussion boards, file sharing, and comments on tasks or project components facilitate seamless interaction among team members.</p>
+                <a href="#" class="all-btn">Explore Now</a>
+            </div>
+            
+            <!-- 2 Tab  -->
+
+            <div class="image">
+                <img src="images/Business growth-pana.svg" alt="illustration-features-tab-3">
+            </div>
+            <div class="content">
+                <h1>Project Planning and Tracking</h1>
+                <p>The ability to plan and track projects is essential for project managers. Users should be able to create project timelines, set milestones, allocate resources, and monitor progress. Gantt charts, project dashboards, and reporting tools are valuable for project planning and tracking.</p>
+                <a href="#" class="all-btn">Explore Now</a>
+            </div>
+            <!-- 3 Tab  -->
+        </div>
+    </section>
+    <!-- features sectin ends -->
+
+   
+    <!-- footer section starts  -->
+    <section class="footer" id="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="#"><i class="fas fa-chevron-right"></i>Home</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Features</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Download</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Contact</a>
+            </div>
+            <div class="box">
+                <h3>Our Services</h3>
+                <a href="#"><i class="fas fa-chevron-right"></i>Bookmark Extension</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Chrome Themes</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Firefox Themes</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Screen Recorder Extension</a>
+                <a href="#"><i class="fas fa-chevron-right"></i>Screen Shot Extension</a>
+            </div>
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#"><i class="fas fa-phone"></i>+123-456-789</a>
+                <a href="#"><i class="fas fa-phone"></i>+111-222-3333</a>
+                <a href="#"><i class="fas fa-envelope"></i>company@example.com</a>
+                <a href="#"><i class="fas fa-envelope"></i>company@example.com</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i>Mumbai, India - 12345</a>
+            </div>
+            <div class="box">
+                <h3>Follow Us</h3>
+                <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
+                <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
+                <a href="#"><i class="fab fa-instagram"></i>Instagram</a>
+                <a href="#"><i class="fab fa-linkedin"></i>LinkedIn</a>
+                <a href="#"><i class="fab fa-pinterest"></i>Pinterest</a>
+            </div>
+        </div>
+        <div class="credit">
+            Created by <a href="#" target="_blank"><span>Ashish
+                    Kumar Palai</span> | All rights reserved</a>
+        </div>
+    </section>
+    <!-- footer section ends -->
+
 </body>
+
 </html>
+<script src="index.js"></script>

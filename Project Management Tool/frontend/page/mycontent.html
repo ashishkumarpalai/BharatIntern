@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My content</title>
+    <link rel="stylesheet" href="../style/mycontent.css">
+    <link rel="stylesheet" href="../style/landing.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- Include SweetAlert2 JavaScript (from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">ProjectManagement</a>
+            </div>
+            <div class="main_list" id="mainListDiv">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li onclick="checkTokenalluser()"><a href="#">All User</a></li>
+                    <li onclick="checkToken()"><a href="#">Task </a></li>
+                    <!-- <li><a href="../page/about.html">About</a></li> -->
+                    <!-- <li><a href="./page/signup.html">Account</a></li> -->
+                    <li class="dropdown">
+                        <a href="#">Account</a>
+                        <div class="dropdown-content">
+                            <!-- <a href="#" id="uname">Name</a> -->
+                            <a href="signup.html" id="signup">signup</a>
+                            <a href="#" id="logout">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="media_button">
+                <button class="main_media_button" id="mediaButton">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <main class="container2">
+        <section class="user-list">
+            <h2>User Details</h2>
+            <ul id="userDetails"></ul>
+        </section>
+        <section class="task-list">
+            <h2>Tasks</h2>
+            <ul id="tasks"></ul>
+        </section>
+        <section class="task-form">
+            <h2>Create Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="assignedTo">Assigned To:</label>
+                    <input type="text" id="assignedTo" name="assignedTo" required>
+                </div>
+                <div class="form-group">
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" id="dueDate" name="dueDate" required>
+                </div>
+                <button type="submit">Create Task</button>
+            </form>
+        </section>
+    </main>
+
+    
+</body>
+
+</html>
+<script src="../Scripts/mycontent.js"></script>

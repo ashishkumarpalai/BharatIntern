@@ -1,0 +1,240 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(45deg, #ff5733, #ffbd33, #33ff57, #336cff);
+}
+.container2 {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 100px;
+    width: 80%;
+    font-size: large;
+    /* display: block; */
+    margin: auto;
+}
+
+/* Left side for user details and task details */
+.container2 .left-side {
+    flex: 1;
+    padding: 20px;
+}
+
+.user-list,
+.task-list {
+    padding: 20px;
+    /* background-color: #fff; */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+    margin-bottom: 20px;
+}
+
+.container2 h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.container2 ul {
+    list-style: none;
+}
+
+.container2 li {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.container2 li:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Right side for the form */
+.container2 .right-side {
+    flex: 1;
+    padding: 20px;
+}
+
+.container2 .task-form {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container2 h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.container2 form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+.container2 input[type="text"],
+textarea,
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container2 button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+/* Responsive CSS for tablets (768px and below) */
+@media screen and (max-width: 768px) {
+    header {
+        font-size: 24px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .left-side,
+    .right-side {
+        width: 100%;
+    }
+
+    .task-form {
+        padding: 10px;
+    }
+
+    li {
+        padding: 10px;
+    }
+}
+
+/* Responsive CSS for mobile devices (480px and below) */
+@media screen and (max-width: 480px) {
+    header {
+        font-size: 20px;
+    }
+
+    .container {
+        margin: 10px;
+    }
+
+    .left-side,
+    .right-side {
+        width: 100%;
+    }
+
+    .task-form {
+        padding: 5px;
+    }
+
+    li {
+        padding: 5px;
+    }
+}
+
+
+
+
+
+
+
+/* =======================================swal========================================================== */
+
+/* Custom CSS for Swal task form */
+.swal2-container {
+    font-family: Arial, sans-serif;
+}
+
+.swal2-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.swal2-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.swal2-input,
+.swal2-textarea,
+.swal2-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.swal2-select {
+    height: 36px;
+    /* Adjust the height for select elements */
+}
+
+.swal2-input[type="date"] {
+    height: 36px;
+    /* Adjust the height for date input */
+}
+
+.swal2-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.swal2-confirm-button,
+.swal2-cancel-button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive CSS for Swal task form on small screens */
+@media screen and (max-width: 480px) {
+
+    .swal2-input,
+    .swal2-textarea,
+    .swal2-select,
+    .swal2-input[type="date"] {
+        font-size: 0.9rem;
+        /* Adjust font size for small screens */
+    }
+
+    .swal2-title {
+        font-size: 1.2rem;
+        /* Adjust font size for small screens */
+    }
+
+    .swal2-confirm-button,
+    .swal2-cancel-button {
+        font-size: 1rem;
+        /* Adjust font size for small screens */
+    }
+}
