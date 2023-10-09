@@ -74,7 +74,7 @@ taskRouter.get('/', authenticate, async (req, res) => {
 });
 
 // Route for getting a task by ID
-taskRouter.get('/:taskId', authenticate, async (req, res) => {
+taskRouter.get('/:taskId',authenticate, async (req, res) => {
     try {
         const task = await TaskModel.findById(req.params.taskId).populate('assignedTo').populate('taskcreator')
 
@@ -90,7 +90,7 @@ taskRouter.get('/:taskId', authenticate, async (req, res) => {
 });
 
 // Route for updating a task by ID
-taskRouter.put('/:taskId', authenticate, async (req, res) => {
+taskRouter.put('/:taskId',authenticate, async (req, res) => {
     try {
         const { title, description, assignedTo, status, dueDate } = req.body;
 
@@ -133,7 +133,7 @@ taskRouter.put('/:taskId', authenticate, async (req, res) => {
 
 // Route for deleting a task by ID
 
-taskRouter.delete('/:taskId', authenticate, async (req, res) => {
+taskRouter.delete('/:taskId',authenticate, async (req, res) => {
     try {
         // Find the task by ID
         const task = await TaskModel.findById(req.params.taskId);
